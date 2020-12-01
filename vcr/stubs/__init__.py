@@ -280,11 +280,6 @@ class VCRConnection:
             # Cassette is write-protected, don't actually connect
             return
 
-        from vcr.patch import force_reset
-
-        with force_reset():
-            return self.real_connection.connect(*args, **kwargs)
-
         self._sock = VCRFakeSocket()
 
     @property
